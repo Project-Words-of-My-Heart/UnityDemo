@@ -5,19 +5,27 @@ using TMPro;
 
 public class TrashController : Interactable
 {
-    [SerializeField] private Vector2 m_Offset;
-    [SerializeField] private TextMeshProUGUI m_TextObject;
+    [SerializeField] private Vector2 _offset;
+    [SerializeField] private TextMeshProUGUI _textObject;
 
-    private bool m_isChecked = false;
+    private bool _isChecked = false;
 
     public override IEnumerator Interact()
     {
-        if (!m_isChecked) { m_TextObject.text = "±ğ·­À¬»øÍ°£¬ËµÕæµÄ¡£"; m_isChecked = true; }
-        else { m_TextObject.text = "½ĞÄã±ğ·­Äã»¹·­£¿"; }
-        m_TextObject.enabled = true;
+        if (!_isChecked)
+        {
+            _textObject.text = "åˆ«ç¿»åƒåœ¾æ¡¶ï¼Œè¯´çœŸçš„ã€‚";
+            _isChecked = true;
+        }
+        else
+        {
+            _textObject.text = "å«ä½ åˆ«ç¿»ä½ è¿˜ç¿»ï¼Ÿ";
+        }
+
+        _textObject.enabled = true;
 
         yield return new WaitForSeconds(3);
 
-        m_TextObject.enabled = false;
+        _textObject.enabled = false;
     }
 }

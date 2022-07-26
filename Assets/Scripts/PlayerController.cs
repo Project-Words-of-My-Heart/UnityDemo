@@ -2,78 +2,83 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("Player")]
-    [SerializeField] private float m_MoveSpeed;
-    [SerializeField] private Animator m_Animator;
-    [SerializeField] private SpriteRenderer m_SpriteRenderer;
+    [Header("Player")] 
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    [Header("Interactable")]
-    [SerializeField] private GameObject m_InteractableText;
-    [SerializeField] private Vector2 m_BoxSize;
-    [SerializeField] private Vector2 m_TextOffset;
+    [Header("Interactable")] 
+    [SerializeField] private GameObject _interactableText;
 
-    private float horizontalSpeed, verticalSpeed;
+    [SerializeField] private Vector2 _boxSize;
+    [SerializeField] private Vector2 _textOffset;
+
+    private float _horizontalSpeed, _verticalSpeed;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        m_Animator = GetComponent<Animator>();
-        m_InteractableText.SetActive(false);
-        m_InteractableText.GetComponent<TextMesh>().text = "°´F½»»¥";
+        _animator = GetComponent<Animator>();
+        _interactableText.SetActive(false);
+        _interactableText.GetComponent<TextMesh>().text = "æŒ‰Fäº¤äº’";
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        setAnimation();
+        SetAnimation();
 
-        if (Input.GetKeyDown(KeyCode.F)) { CheckInteraction(); }
-        m_InteractableText.transform.position = new Vector2(transform.position.x + m_TextOffset.x, transform.position.y + m_TextOffset.y);
+        if (Input.GetKeyDown(KeyCode.F)) CheckInteraction();
+        _interactableText.transform.position =
+            new Vector2(transform.position.x + _textOffset.x, transform.position.y + _textOffset.y);
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        horizontalSpeed = Input.GetAxisRaw("Horizontal") * m_MoveSpeed * Time.deltaTime;
-        verticalSpeed = Input.GetAxisRaw("Vertical") * m_MoveSpeed * Time.deltaTime;
+        _horizontalSpeed = Input.GetAxisRaw("Horizontal") * _moveSpeed * Time.deltaTime;
+        _verticalSpeed = Input.GetAxisRaw("Vertical") * _moveSpeed * Time.deltaTime;
 
-        if (horizontalSpeed > 0) { m_SpriteRenderer.flipX = false; }
-        else if (horizontalSpeed < 0) { m_SpriteRenderer.flipX = true; }
+        if (_horizontalSpeed > 0)
+            _spriteRenderer.flipX = false;
+        else if (_horizontalSpeed < 0) _spriteRenderer.flipX = true;
 
-        transform.position = new Vector2(transform.position.x + horizontalSpeed, transform.position.y + verticalSpeed);
+        transform.position = new Vector2(transform.position.x + _horizontalSpeed, transform.position.y + _verticalSpeed);
     }
 
-    private void setAnimation()
+    private void SetAnimation()
     {
-        if ((horizontalSpeed != 0 || verticalSpeed != 0) && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("jump")) { m_Animator.SetBool("isRunning", true); }
-        else { m_Animator.SetBool("isRunning", false); }
+        if ((_horizontalSpeed != 0 || _verticalSpeed != 0) && !_animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
+            _animator.SetBool("isRunning", true);
+        else
+            _animator.SetBool("isRunning", false);
 
-        if (Input.GetButtonDown("Jump") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
+        if (Input.GetButtonDown("Jump") && !_animator.GetCurrentAnimatorStateInfo(0).IsName("jump"))
         {
-            m_Animator.SetBool("isRunning", false);
-            m_Animator.SetTrigger("jump");
+            _animator.SetBool("isRunning", false);
+            _animator.SetTrigger("jump");
         }
     }
 
     public void ShowInteractableMessage()
     {
-        m_InteractableText.SetActive(true);
+        _interactableText.SetActive(true);
     }
 
     public void UnshowInteractableMessage()
     {
-        m_InteractableText.SetActive(false);
+        _interactableText.SetActive(false);
     }
 
     private void CheckInteraction()
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, m_BoxSize, 0, Vector2.zero);
+        var hits = Physics2D.BoxCastAll(transform.position, _boxSize, 0, Vector2.zero);
 
         if (hits.Length > 0)
-        {
-            foreach (RaycastHit2D raycastHit2D in hits)
-            {
-                if (raycastHit2D.transform.GetComponent<Interactable>()) { StartCoroutine(raycastHit2D.transform.GetComponent<Interactable>().Interact()); return; }
-            }
-        }
+            foreach (var rayCastHit2D in hits)
+                if (rayCastHit2D.transform.GetComponent<Interactable>())
+                {
+                    StartCoroutine(rayCastHit2D.transform.GetComponent<Interactable>().Interact());
+                    return;
+                }
     }
 }
