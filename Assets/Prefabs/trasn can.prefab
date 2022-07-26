@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8070541556868787641}
   - component: {fileID: 3587758855681737945}
   - component: {fileID: 7870596690655851276}
-  - component: {fileID: 344884739650814677}
   - component: {fileID: 4426430997700427250}
+  - component: {fileID: 344884739650814677}
   m_Layer: 0
   m_Name: trasn can
   m_TagString: Untagged
@@ -113,20 +113,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.61, y: 0.28}
   m_EdgeRadius: 0
---- !u!114 &344884739650814677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3159583191220637293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c34b3a949849e48b22fa4139f1db66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Offset: {x: 0, y: 0}
-  m_TextObject: {fileID: 0}
 --- !u!58 &4426430997700427250
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -142,4 +128,17 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
+--- !u!114 &344884739650814677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159583191220637293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c34b3a949849e48b22fa4139f1db66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textObject: {fileID: 0}

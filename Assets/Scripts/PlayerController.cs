@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interactable")] 
     [SerializeField] private GameObject _interactableText;
-
     [SerializeField] private Vector2 _boxSize;
     [SerializeField] private Vector2 _textOffset;
 
@@ -42,7 +41,8 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.flipX = false;
         else if (_horizontalSpeed < 0) _spriteRenderer.flipX = true;
 
-        transform.position = new Vector2(transform.position.x + _horizontalSpeed, transform.position.y + _verticalSpeed);
+        transform.position =
+            new Vector2(transform.position.x + _horizontalSpeed, transform.position.y + _verticalSpeed);
     }
 
     private void SetAnimation()
@@ -71,13 +71,14 @@ public class PlayerController : MonoBehaviour
 
     private void CheckInteraction()
     {
-        var hits = Physics2D.BoxCastAll(transform.position, _boxSize, 0, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, _boxSize, 0, Vector2.zero); 
+        Debug.Log("Check!" + hits.Length.ToString());
 
         if (hits.Length > 0)
-            foreach (var rayCastHit2D in hits)
-                if (rayCastHit2D.transform.GetComponent<Interactable>())
+            foreach (RaycastHit2D raycastHit2D in hits)
+                if (raycastHit2D.transform.GetComponent<Interactable>())
                 {
-                    StartCoroutine(rayCastHit2D.transform.GetComponent<Interactable>().Interact());
+                    StartCoroutine(raycastHit2D.transform.GetComponent<Interactable>().Interact());
                     return;
                 }
     }

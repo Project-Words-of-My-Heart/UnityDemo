@@ -1,11 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class TrashController : Interactable
 {
-    [SerializeField] private Vector2 _offset;
     [SerializeField] private TextMeshProUGUI _textObject;
 
     private bool _isChecked = false;

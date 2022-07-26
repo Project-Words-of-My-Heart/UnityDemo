@@ -1917,8 +1917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01328aafed85c9e4aa54e57dade62728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TextMeshProGUI: {fileID: 1370973324}
-  m_Message: "\u8FD9\u662F\u5899\uFF0C\u522B\u649E\u4E86"
+  _textMeshProGui: {fileID: 1370973324}
+  _message: "\u8FD9\u662F\u5899\uFF0C\u522B\u649E\u4E86"
 --- !u!1 &349160373
 GameObject:
   m_ObjectHideFlags: 0
@@ -3285,11 +3285,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 964216342}
     m_Modifications:
     - target: {fileID: 1598730127744549594, guid: dd9c7f3b5b1a73f4e9ab1b1de03a3a62, type: 3}
-      propertyPath: m_Message
-      value: "\u51FA\u4E0D\u53BB\u623F\u95F4\u7684\uFF0C\u529F\u80FD\u8FD8\u6CA1\u505A\u5462"
+      propertyPath: _message
+      value: "\u51FA\u4E0D\u53BB\u7684\uFF0C\u529F\u80FD\u8FD8\u6CA1\u505A\u5462"
       objectReference: {fileID: 0}
     - target: {fileID: 1598730127744549594, guid: dd9c7f3b5b1a73f4e9ab1b1de03a3a62, type: 3}
-      propertyPath: m_TextMeshProGUI
+      propertyPath: _textMeshProGui
       value: 
       objectReference: {fileID: 1370973324}
     - target: {fileID: 7325122409852161600, guid: dd9c7f3b5b1a73f4e9ab1b1de03a3a62, type: 3}
@@ -3919,6 +3919,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 344884739650814677, guid: 80dec0abf4b7dd740ab99de39d656a61, type: 3}
+      propertyPath: _textObject
+      value: 
+      objectReference: {fileID: 1370973324}
+    - target: {fileID: 344884739650814677, guid: 80dec0abf4b7dd740ab99de39d656a61, type: 3}
       propertyPath: m_TextObject
       value: 
       objectReference: {fileID: 1370973324}
@@ -4144,8 +4148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01328aafed85c9e4aa54e57dade62728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TextMeshProGUI: {fileID: 1370973324}
-  m_Message: "\u8FD9\u662F\u5899\uFF0C\u522B\u649E\u4E86"
+  _textMeshProGui: {fileID: 1370973324}
+  _message: "\u8FD9\u662F\u5899\uFF0C\u522B\u649E\u4E86"
 --- !u!4 &1295577556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7325122409852161601, guid: dd9c7f3b5b1a73f4e9ab1b1de03a3a62, type: 3}
@@ -4796,6 +4800,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 101521322858891613, guid: 6abea51ba26a94c498346b5748098f70, type: 3}
+      propertyPath: _interactableText
+      value: 
+      objectReference: {fileID: 1572982484}
     - target: {fileID: 101521322858891613, guid: 6abea51ba26a94c498346b5748098f70, type: 3}
       propertyPath: m_InteractableText
       value: 
